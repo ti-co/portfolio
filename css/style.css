@@ -162,6 +162,14 @@ body {
   margin-right: -2rem;
 }
 
+.icons-row {
+  margin-top: 5rem; 
+  display: none; 
+  justify-content: space-around; 
+  align-items: stretch; 
+  width: 100%;
+}
+
 @media only screen and (min-width: 560px) {
   .slide {
     width: 32%;  
@@ -170,6 +178,10 @@ body {
   .profile-picture {
     width: 15rem; 
     margin-right: 0;
+  }
+
+  .icons-row {
+    display: flex; 
   }
 }    
   

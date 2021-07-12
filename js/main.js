@@ -77,8 +77,8 @@ const context = {
       what: "Users can create, update, delete and see information available in a local library.",
       frameworks: 'HTML, CSS, MongoDB, Node.js, Express.js',
       how: "This is a back-end practice project (tutorial by MDN) on how to build an app with Express.js. The app is connected to a database in MongoDB, and is filled with some items for the book, bookinstance, author, and genre models. Routes are build to provide for GET, POST, PUT, and DELETE requests for all models in the app.",    
-      weblink: "https://github.com/ti-co/library-express-app",
-      repolink: "https://guarded-beach-12591.herokuapp.com/catalog",
+      weblink: "https://guarded-beach-12591.herokuapp.com/catalog",
+      repolink: "https://github.com/ti-co/library-express-app",
       javascript: false
     }
   ],
@@ -91,8 +91,8 @@ const context = {
       what: "Users can create, update, delete and see information available in a local library.",
       frameworks: 'HTML, CSS, MongoDB, Node.js, Express.js',
       how: "This is a back-end practice project (tutorial by MDN) on how to build an app with Express.js. The app is connected to a database in MongoDB, and is filled with some items for the book, bookinstance, author, and genre models. Routes are build to provide for GET, POST, PUT, and DELETE requests for all models in the app.",    
-      weblink: "https://github.com/ti-co/library-express-app",
-      repolink: "https://guarded-beach-12591.herokuapp.com/catalog",
+      weblink: "https://guarded-beach-12591.herokuapp.com/catalog",
+      repolink: "https://github.com/ti-co/library-express-app",
       javascript: false
     },
     {
@@ -508,8 +508,9 @@ function slidePlus (num, index) {
     return
   }
 
-  
-  const easeOut = progress => Math.pow(--progress, 1) + 1; 
+  function easeOutQuint(x) {
+    return 1 - Math.pow(1 - x, 5);
+  }
 
   function slideRight(num) {
     timestamp = new Date().getTime();
@@ -519,7 +520,7 @@ function slidePlus (num, index) {
     const f = Math.abs(dist/duration);
     let elapsed = timestamp - start;
     let progress = elapsed/duration;
-    const easing = easeOut(progress);
+    const easing = easeOutQuint(progress);
     const refactor = easing*f;
     slider.style.transform = 'translateX(-' + Math.min(refactor*elapsed, dist) + "%)";
     if (elapsed < duration) {
@@ -547,7 +548,7 @@ function slidePlus (num, index) {
     const f = Math.abs(dist/duration);
     let elapsed = timestamp - start;
     let progress = elapsed/duration;
-    const easing = easeOut(progress);
+    const easing = easeOutQuint(progress);
     const refactor = easing*f;
     slider.style.transform = 'translateX(' + Math.min(dist+(refactor*elapsed), 0) + "%)";
     if (elapsed < duration) {
@@ -776,7 +777,14 @@ const toggleNavButton = () => {
   }  
 }
 
-
-
+const formControls = document.getElementsByClassName('form-control');
+const emptyForm = () => {
+  let i = 0;
+  setTimeout(() => {
+    for (i=0; i<formControls.length-1; i++) {
+      formControls[i].value = formControls[i].placeholder;
+    }
+  }, 1000) 
+}
 
  
